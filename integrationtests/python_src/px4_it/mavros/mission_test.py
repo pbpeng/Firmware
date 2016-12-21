@@ -197,9 +197,11 @@ class MavrosMissionTest(unittest.TestCase):
 
     def run_mission(self):
         """switch mode: auto and arm"""
+
         self._srv_cmd_long(False, 176, False,
                            # custom, auto, mission
                            1, 4, 4, 0, 0, 0, 0)
+
         # make sure the first command doesn't get lost
         time.sleep(1)
 
@@ -209,6 +211,10 @@ class MavrosMissionTest(unittest.TestCase):
 
     def wait_until_ready(self):
         """FIXME: hack to wait for simulation to be ready"""
+        # wait for simulation to load
+        time.sleep(10)
+
+        # wait for global position pub
         while not self.has_global_pos:
             self.rate.sleep()
 
