@@ -6,7 +6,7 @@
 set -e
 
 # TODO move to docker image
-pip install px4tools pymavlink -q
+pip install px4tools==0.6.6 pymavlink -q
 
 # handle cleaning command
 do_clean=true
